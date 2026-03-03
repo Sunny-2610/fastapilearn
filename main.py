@@ -12,3 +12,14 @@ def health_check():
 @app.get("/items")
 def get_items():
     return items    
+
+
+#getting started with post request
+
+@app.post("/items")
+def create_item(item: str):
+    items.append(item)
+    return {"item": item}
+
+
+
