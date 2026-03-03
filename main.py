@@ -1,25 +1,7 @@
 from fastapi import FastAPI
-
+from app.routes.issues import router as issues_router
 app = FastAPI()
 
-items = ["item1", "item2", "item3"]
-
-@app.get("/health")
-def health_check():
-    return {"status": "healthy"}
 
 
-@app.get("/items")
-def get_items():
-    return items    
-
-
-#getting started with post request
-
-@app.post("/items")
-def create_item(item: str):
-    items.append(item)
-    return {"item": item}
-
-
-
+app.include_router(issues_router)
